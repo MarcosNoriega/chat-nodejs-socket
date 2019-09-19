@@ -42,4 +42,10 @@ $(document).ready(function() {
         $('#usuarios').html(html);
     });
 
+    socket.on('cargar mensajes', function(data) {
+        for (let i = data.length - 1; i >= 0; i--) {
+            $('#mensajes').append(`<p class="mensajeEspeciales"><b>${data[i].userName}: </b>${data[i].mje}</p>`);
+        }
+    });
+
 });

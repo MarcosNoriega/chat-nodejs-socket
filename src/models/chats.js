@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const chats = new Schema({
+const Chats = new Schema({
     userName: String,
-    mje: String
+    mje: String,
+    created_at: {
+        type: Date,
+        default: Date.now
+    }
 });
 
-module.exports = mongoose.model('chats', chats);
+module.exports = mongoose.model('Chats', Chats);

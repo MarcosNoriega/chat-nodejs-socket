@@ -1,15 +1,20 @@
 module.exports = (server) => {
     let users = {};
 
+    const Chat = require('../models/chats');
+
 
     const socketIO = require('socket.io');
 
     const io = socketIO.listen(server);
 
-    io.on('connection', socket => {
+    io.on('connection', async socket => {
         console.log('nuevo usuario');
 
-        socket.on('enviar mensaje', (mensaje, cb) => {
+        let mensajes = await Chat.find().sort( {created_at: - 1} ).limit(8);
+        socket.emit('cargar mensajes', mensajes);
+
+        socket.on('enviar mensaje', async (mensaje, cb) => {
 
             var mje = mensaje.trim();
 
@@ -32,12 +37,12 @@ module.exports = (server) => {
                     cb('Error! por favor ingresa tu mensaje')
                 }
             }else{
-                /*var newMje = new Chat({
+                var newMje = new Chat({
                     userName: socket.user,
                     mje
                 });
 
-                await newMje.save();*/
+                await newMje.save();
 
                 io.sockets.emit('envio:mensaje', {
                     mje,
@@ -64,5 +69,6 @@ module.exports = (server) => {
             delete users[socket.user];
             io.sockets.emit('list users', Object.keys(users));
         });
+
     });
 }
