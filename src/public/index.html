@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -16,7 +17,26 @@
         <a class="navbar-brand mx-auto" href="#">Ark4Chat</a>
     </nav>
     <div class="container mt-4">
-        <div class="row">
+        <div class="row justify-content-center" id="login">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="error" class="alert-danger"></p>
+                        <form id="form-login">
+                            <div class="form-group">
+                                <input type="text" id="usuario" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in-alt"></i> Entrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-none" id="chat">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">

@@ -5,6 +5,9 @@ const path = require('path');
 
 app.set('port', process.env.PORT || 3000);
 
+//database
+require('../db');
+
 
 //middleware
 app.use(morgan('dev'));
